@@ -192,3 +192,16 @@ NameCombinationSet          GeneratedName
 - **Google OAuth not working**: Make sure your redirect URI matches exactly: `http://localhost:3000/api/auth/callback/google`
 - **Database connection error**: Verify your `DATABASE_URL` includes `?sslmode=require` for Neon.
 - **Prisma client not found**: Run `npx prisma generate` after installing dependencies.
+
+
+
+## CI and Environment Variables Questions
+1. Why should .env.local never be committed?
+The .env contains sensitive information about the project. If it were committed, then anyone could have control of things in the project like cloud services or AI api keys. There goes money and the security of information.
+
+2. Why are GitHub Secrets safer than plain environment variables?
+They are not visible after creation. Github matches them to where they need to go. And since the env shouldn't be committed, this is the way to be able to share sensitive information.
+
+3. What would happen if you wrote the following in your yml file?
+
+If the database url were hardcoded, that would be insecure, since other people would be able to view it. Also that defeats the purpose of having the yaml.
