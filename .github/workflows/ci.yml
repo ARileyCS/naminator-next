@@ -30,8 +30,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm build --if-present 
-    - run: npm lint
+    - run: npm run build --if-present 
+    - run: npm run lint
 
   
   build:
@@ -50,7 +50,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm build --if-present
+    - run: npm run build --if-present
 
   test:
     needs: build
@@ -66,8 +66,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm build --if-present
-    - run: npm test
+    - run: npm run build --if-present
+    - run: npm run test
     
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
